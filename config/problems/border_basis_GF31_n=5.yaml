@@ -1,0 +1,60 @@
+task: border_basis
+
+# Base field configuration
+field:
+  type: "GF"  # QQ, GF, RR
+  param: 31 # characteristic for GF
+
+# Polynomial ring configuration
+ring:
+  num_variables: 5
+  term_order: "degrevlex"  # degrevlex, lex, etc.
+
+# Polynomial generation parameters
+# Polynomials used in the matrix A for F=AG in backward_basis_transformation.
+# Note: the backward transformation is updated from NeurIPS version. We now just sample A (no Bruhat decomposition)
+polynomial:
+  # Degree settings
+  max_degree: 1
+  min_degree: 0
+  degree_sampling: "uniform"  # "uniform" or "fixed" - 'unifrom' means that the degree of the sampled polynomials distributes uniformly over [min_degree, max_degree].
+
+  # Term settings
+  max_terms: 10  # the maximum number of monomials in the sampled polynomials
+  term_sampling: "uniform"  # "uniform" or "fixed" - 'uniform' means that the number of monomials distributes uniformly over [min_terms, max_terms].
+
+  # Coefficient settings (used based on field type)
+  coefficient:
+    min: -5   # For RR, ZZ
+    max: 5    # For RR, ZZ
+    bound: 10  # For QQ (max value for numerator/denominator)
+
+  # Generation control
+  strictly_conditioned: true
+  nonzero: true  # Whether to ensure non-zero polynomials
+
+# Dataset structure parameters
+dataset:
+  # The size of F
+  min_polynomials: 5   # Not used now. The current minimum size of F is set to (#variables + 1).
+  max_polynomials: 10  # The maximum size of F (Note: 10 might be too small) -- Let's set it to 2n
+
+  # Dataset split sizes
+  num_samples_train: 1200000
+  num_samples_test: 1200
+  # num_samples_valid: 1000
+
+  # Border basis sampling parameters
+  degree_bounds: [2,2,2,2,2]  # the maximum degree of each variable in the polynomials in border bases
+  total_degree_bound: 4  # the maximum total degree of the polynomials in border bases
+
+  leading_terms_saved: 5  # the number of leading terms saved in the dataset for each polynomial in V 
+  include_coefficient: true  # whether to include the coefficients of the leading terms in the dataset in V
+
+  k_last_calls: 5  # the number of last Gaussian Elimination steps (in the last L-stable span call) to use for the dataset
+  # num_samples_to_pick: 10  # the number of samples to pick from the dataset
+
+  sort_V: true  # whether to sort the terms of the polynomials in V
+
+# Random seed for reproducibility
+seed: 42

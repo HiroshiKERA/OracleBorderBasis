@@ -1,0 +1,223 @@
+base: &base
+  exp_name: "transformer-border"
+  group: "main"
+  task: "expansion"
+  batch_size: 16
+  test_batch_size: 8
+  epochs: 8
+  seed: 42
+
+  training_size: 1000000
+  test_size: 1000
+  train_test_split: false
+  max_degree: 20   # the exponent tokens are prepared up to this number
+  weight_decay: 0.0
+  train_sample_skimming: true
+  max_sequence_length: 40000
+  
+  model: "custom_bart"
+  embedding_type: "standard"
+  position_encoding_type: "learned"
+  coeff_encoding: "prefix"
+  learning_target: "k-leading-terms"
+  monomial_embedding: true
+
+  save_wandb_artifact: true
+
+environments: &env
+  gpu_id: 0
+  num_workers: 4
+
+gf7_n3_base: &gf7_n3_base
+  <<: *base
+  field: "GF7"
+  num_variables: 3
+  data_path: "data/expansion/GF7_n=3_deg=1_terms=10_bounds=4_4_4_total=2"
+  
+gf7_n4_base: &gf7_n4_base
+  <<: *base
+  field: "GF7"
+  num_variables: 4
+  data_path: "data/expansion/GF7_n=4_deg=1_terms=10_bounds=4_4_4_4_total=2"
+
+gf7_n5_base: &gf7_n5_base
+  <<: *base
+  field: "GF7"
+  num_variables: 5
+  data_path: "data/expansion/GF7_n=5_deg=1_terms=10_bounds=4_4_4_4_4_total=2"
+
+gf31_n3_base: &gf31_n3_base
+  <<: *base
+  field: "GF31"
+  num_variables: 3
+  data_path: "data/expansion/GF31_n=3_deg=1_terms=10_bounds=4_4_4_total=2"
+
+gf31_n4_base: &gf31_n4_base
+  <<: *base
+  field: "GF31"
+  num_variables: 4
+  data_path: "data/expansion/GF31_n=4_deg=1_terms=10_bounds=4_4_4_4_total=2"
+
+gf31_n5_base: &gf31_n5_base
+  <<: *base
+  field: "GF31"
+  num_variables: 5
+  data_path: "data/expansion/GF31_n=5_deg=1_terms=10_bounds=4_4_4_4_4_total=2"
+
+gf127_n3_base: &gf127_n3_base
+  <<: *base
+  field: "GF127"
+  num_variables: 3
+  data_path: "data/expansion/GF127_n=3_deg=1_terms=10_bounds=4_4_4_total=2"
+
+gf127_n4_base: &gf127_n4_base
+  <<: *base
+  field: "GF127"
+  num_variables: 4
+  data_path: "data/expansion/GF127_n=4_deg=1_terms=10_bounds=4_4_4_4_total=2"
+
+gf127_n5_base: &gf127_n5_base
+  <<: *base
+  field: "GF127"
+  num_variables: 5
+  data_path: "data/expansion/GF127_n=5_deg=1_terms=10_bounds=4_4_4_4_4_total=2"
+
+
+experiments:
+  skim_p7_n3_k1:
+    <<: *gf7_n3_base
+    num_leading_terms: 1
+    tags: ["skim", 'p=7', 'n=3', 'k=1']
+
+  skim_p7_n3_k3:
+    <<: *gf7_n3_base
+    num_leading_terms: 3
+    tags: ["skim", 'p=7', 'n=3', 'k=3']
+
+  skim_p7_n3_k5:
+    <<: *gf7_n3_base
+    num_leading_terms: 5
+    tags: ["skim", 'p=7', 'n=3', 'k=5']
+
+  skim_p31_n3_k1:
+    <<: *gf31_n3_base
+    num_leading_terms: 1
+    tags: ["skim", 'p=31', 'n=3', 'k=1']
+
+  skim_p31_n3_k3:
+    <<: *gf31_n3_base
+    num_leading_terms: 3
+    tags: ["skim", 'p=31', 'n=3', 'k=3']
+
+  skim_p31_n3_k5:
+    <<: *gf31_n3_base
+    num_leading_terms: 5
+    tags: ["skim", 'p=31', 'n=3', 'k=5']
+
+  skim_p127_n3_k1:
+    <<: *gf127_n3_base
+    num_leading_terms: 1
+    tags: ["skim", 'p=127', 'n=3', 'k=1']
+
+  skim_p127_n3_k3:
+    <<: *gf127_n3_base
+    num_leading_terms: 3
+    tags: ["skim", 'p=127', 'n=3', 'k=3']
+
+  skim_p127_n3_k5:
+    <<: *gf127_n3_base
+    num_leading_terms: 5
+    tags: ["skim", 'p=127', 'n=3', 'k=5']
+
+
+  skim_p7_n4_k1:
+    <<: *gf7_n4_base
+    num_leading_terms: 1
+    tags: ["skim", 'p=7', 'n=4', 'k=1']
+
+  skim_p7_n4_k3:
+    <<: *gf7_n4_base
+    num_leading_terms: 3
+    tags: ["skim", 'p=7', 'n=4', 'k=3']
+
+  skim_p7_n4_k5:
+    <<: *gf7_n4_base
+    num_leading_terms: 5
+    tags: ["skim", 'p=7', 'n=4', 'k=5']
+
+  skim_p31_n4_k1:
+    <<: *gf31_n4_base
+    num_leading_terms: 1
+    tags: ["skim", 'p=31', 'n=4', 'k=1']
+
+  skim_p31_n4_k3:
+    <<: *gf31_n4_base
+    num_leading_terms: 3
+    tags: ["skim", 'p=31', 'n=4', 'k=3']
+
+  skim_p31_n4_k5:
+    <<: *gf31_n4_base
+    num_leading_terms: 5
+    tags: ["skim", 'p=31', 'n=4', 'k=5']
+
+  skim_p127_n4_k1:
+    <<: *gf127_n4_base
+    num_leading_terms: 1
+    tags: ["skim", 'p=127', 'n=4', 'k=1']
+
+  skim_p127_n4_k3:
+    <<: *gf127_n4_base
+    num_leading_terms: 3
+    tags: ["skim", 'p=127', 'n=4', 'k=3']
+
+  skim_p127_n4_k5:
+    <<: *gf127_n4_base
+    num_leading_terms: 5
+    tags: ["skim", 'p=127', 'n=4', 'k=5']
+
+
+
+  skim_p7_n5_k1:
+    <<: *gf7_n5_base
+    num_leading_terms: 1
+    tags: ["skim", 'p=7', 'n=5', 'k=1']
+
+  skim_p7_n5_k3:
+    <<: *gf7_n5_base
+    num_leading_terms: 3
+    tags: ["skim", 'p=7', 'n=5', 'k=3']
+
+  skim_p7_n5_k5:
+    <<: *gf7_n5_base
+    num_leading_terms: 5
+    tags: ["skim", 'p=7', 'n=5', 'k=5']
+
+  skim_p31_n5_k1:
+    <<: *gf31_n5_base
+    num_leading_terms: 1
+    tags: ["skim", 'p=31', 'n=5', 'k=1']
+
+  skim_p31_n5_k3:
+    <<: *gf31_n5_base
+    num_leading_terms: 3
+    tags: ["skim", 'p=31', 'n=5', 'k=3']
+
+  skim_p31_n5_k5:
+    <<: *gf31_n5_base
+    num_leading_terms: 5
+    tags: ["skim", 'p=31', 'n=5', 'k=5']
+
+  skim_p127_n5_k1:
+    <<: *gf127_n5_base
+    num_leading_terms: 1
+    tags: ["skim", 'p=127', 'n=5', 'k=1']
+
+  skim_p127_n5_k3:
+    <<: *gf127_n5_base
+    num_leading_terms: 3
+    tags: ["skim", 'p=127', 'n=5', 'k=3']
+
+  skim_p127_n5_k5:
+    <<: *gf127_n5_base
+    num_leading_terms: 5
+    tags: ["skim", 'p=127', 'n=5', 'k=5']

@@ -1,0 +1,30 @@
+# Project specific directories
+/sage/
+/wandb/
+/misc/
+/data/
+/results/
+/dump/
+/logs/
+/notebook/
+nohup.out
+*.sbatch
+/figs/
+/.cursor-server/
+
+sweep.yaml
+
+/artifacts/
+/SCRATCH/
+# Hidden files and directories (except .gitignore)
+.*
+!.gitignore
+
+# Underscore patterns (except __init__.py)
+_*
+!__init__.py
+
+
+# ENTER directory
+/ENTER/
+/wandb/

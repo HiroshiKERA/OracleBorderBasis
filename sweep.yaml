@@ -1,0 +1,50 @@
+program: scripts/dataset/generate_dataset.py
+method: grid
+metric:
+  name: test_tokens
+  goal: minimize
+
+parameters:
+  field.param:
+    values: [7, 31, 211, 701]
+
+  dataset.degree_bounds:
+    values:
+      - [4,4,4]  # balanced low
+      - [5,5,5]  # balanced high
+      - [3,4,5]  # increasing
+      - [6,5,4]  # decreasing
+      - [2,2,6]  # imbalanced pairs
+      - [1,1,8]  # very imbalanced pairs
+      - [2,6,2]  # alternating imbalanced
+      - [8,1,1]  # very alternating imbalanced
+      - [1,2,3]  # increasing
+      - [1,1,1]  # all equal
+      
+  polynomial.max_degree:
+    values: [2, 3, 4, 5, 6]
+
+  polynomial.max_terms:
+    values: [10, 20, 30, 40, 50]
+
+  polynomial.max_polynomials:
+    values: [10, 20, 30, 40, 50]
+
+command:
+  - ${env}
+  - bash
+  - -c
+  - >
+    python3 scripts/dataset/generate_dataset.py
+    --config=config/problems/border_basis.yaml
+    --save_dir=./data/border_basis
+    --task=border_basis
+    --n_jobs=1
+    --wandb
+    &&
+    python3 scripts/dataset/generate_dataset.py
+    --config=config/problems/border_basis.yaml
+    --save_dir=./data/expansion
+    --task=expansion
+    --n_jobs=1
+    --wandb

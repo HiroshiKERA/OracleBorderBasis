@@ -1,0 +1,45 @@
+program: scripts/dataset/generate_dataset.py
+method: grid
+metric:
+  name: test_tokens
+  goal: minimize
+
+parameters:
+  field.param:
+    values: [7, 31, 127]
+
+  ring.num_variables:
+    values: [5]
+
+  polynomial.max_degree:
+    values: [1]
+
+  polynomial.max_terms:
+    values: [10]
+
+  polynomial.max_polynomials:
+    values: [6]
+
+  polynomial.num_samples_train:
+    values: [5]
+
+  polynomial.total_degree_bound:
+    values: [4]
+
+  dataset.degree_bounds:
+    value: [2,2,2,2,2]
+
+  dataset.num_samples_train:
+    values: [1200000]
+
+command:
+  - ${env}
+  - bash
+  - -c
+  - >
+    python3 scripts/dataset/generate_dataset.py
+    --config=config/problems/border_basis.yaml
+    --save_dir=/home/htc/mzimmer/SCRATCH/data/border_basis
+    --task=border_basis
+    --n_jobs=-1
+    --wandb 

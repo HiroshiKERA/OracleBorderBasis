@@ -1,0 +1,45 @@
+program: scripts/dataset/generate_dataset.py
+method: grid
+metric:
+  name: test_tokens
+  goal: minimize
+
+parameters:
+  field.param:
+    values: [7, 31, 127]
+
+  ring.num_variables:
+    values: [6]
+
+  polynomial.max_degree:
+    values: [1]
+
+  polynomial.max_terms:
+    values: [10]
+
+  polynomial.max_polynomials:
+    values: [6]
+
+  polynomial.num_samples_train:
+    values: [5]
+
+  polynomial.total_degree_bound:
+    values: [4]
+
+  dataset.degree_bounds:
+    value: [2,2,2,2,2,2]
+
+  dataset.index_range:
+    values: [[0, 100], [100, 200], [200, 300], [300, 400], [400, 500], [500, 600], [600, 700], [700, 800], [800, 900], [900, 999]]
+
+command:
+  - ${env}
+  - bash
+  - -c
+  - >
+    python3 scripts/dataset/generate_dataset.py
+    --config=config/problems/border_basis.yaml
+    --save_dir=./data/expansion
+    --task=expansion
+    --n_jobs=-1
+    --wandb 

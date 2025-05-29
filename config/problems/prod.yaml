@@ -1,0 +1,46 @@
+task: prod
+
+# Base field configuration
+field:
+  type: "GF"  # QQ, GF, RR
+  param: 7 # characteristic for GF
+
+# Polynomial ring configuration
+ring:
+  num_variables: 4
+  term_order: "degrevlex"  # degrevlex, lex, etc.
+
+# Polynomial generation parameters
+polynomial:
+  # Degree settings
+  max_degree: 4
+  min_degree: 1
+  degree_sampling: "uniform"  # "uniform" or "fixed"
+
+  # Term settings
+  max_terms: 5  
+  term_sampling: "uniform"  # "uniform" or "fixed"
+
+  # Coefficient settings (used based on field type)
+  coefficient:
+    min: -5
+    max: 5    # For RR, ZZ
+    bound: 10  # For QQ (max value for numerator/denominator)
+
+  # Generation control
+  strictly_conditioned: true
+  nonzero: true  # Whether to ensure non-zero polynomials
+
+# Dataset structure parameters
+dataset:
+  # Number of polynomials per problem
+  min_polynomials: 2
+  max_polynomials: 4
+
+  # Dataset split sizes
+  num_samples_train: 100000
+  num_samples_test: 1000
+  # num_samples_valid: 1000
+
+# Random seed for reproducibility
+seed: 42

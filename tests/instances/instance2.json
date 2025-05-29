@@ -1,0 +1,45 @@
+{
+    "variables": [
+        "x",
+        "y",
+        "z",
+        "w",
+        "u"
+    ],
+    "V": [
+        "x^3 + y + z + w + u",
+        "y^2 + z + w + u",
+        "z^2 + x + w + u",
+        "w^2 + x + y + u",
+        "u^2 + x + y + z",
+        "x*y - z + w + u",
+        "x*z - y + w + u",
+        "y*z + x - w + u",
+        "z*w - x + y - u",
+        "w*u + x + y - z"
+    ],
+    "F": [
+        "x*y + y*z + w*u",
+        "x^2 - y*z + w*u",
+        "y^2 - x*w + z*u",
+        "z^2 - x*y + w",
+        "w^2 - x*u + z",
+        "u^2 - y*w + x",
+        "x*y*z - w*u + 1",
+        "x*z*w - y + u - 1",
+        "x^3 + y^2 + z^2",
+        "w*u^2 + x*y*z"
+    ],
+    "expected_output": [
+        "z + 2/5*w + 1/5*u",
+        "y - 4*z + 2*w + 2*u",
+        "x + 1/2*y - z + u",
+        "x*u + x + y - z + u",
+        "y*w - u^2 - x",
+        "x*w - z*u + z + w + u",
+        "x^2 - y*z + w*u",
+        "w*u^2 + w*u - 1",
+        "x*z*w - y + u - 1",
+        "x*y*z - w*u + 1"
+    ]
+}

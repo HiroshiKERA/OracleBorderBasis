@@ -1,0 +1,113 @@
+base: &base
+  exp_name: "transformer-border"
+  group: "monomial-embedding"
+  task: "prod"
+  batch_size: 16
+  epochs: 8
+  seed: 42
+
+environments: &env
+  gpu_id: 0
+  num_workers: 4
+
+gf7_base: &gf7_base
+  <<: *base
+  field: "GF7"
+  training_size: 100000
+  test_size: 1000
+  max_degree: 20
+  weight_decay: 0.0
+
+experiments:
+  base_n=2:
+    <<: *gf7_base
+    num_variables: 2
+    model: "custom_bart"
+    embedding_type: "standard"
+    position_encoding_type: "learned"
+    coeff_encoding: "prefix"
+    learning_target: "full"
+    data_path: "data/prod/GF7_n=2"
+    tags: ["base", "full"]
+
+  base_n=3:
+    <<: *gf7_base
+    num_variables: 3
+    model: "custom_bart"
+    embedding_type: "standard"
+    position_encoding_type: "learned"
+    coeff_encoding: "prefix"
+    learning_target: "full"
+    data_path: "data/prod/GF7_n=3"
+    tags: ["base", "full"]
+
+  base_n=4:
+    <<: *gf7_base
+    num_variables: 4
+    model: "custom_bart"
+    embedding_type: "standard"
+    position_encoding_type: "learned"
+    coeff_encoding: "prefix"
+    learning_target: "full"
+    data_path: "data/prod/GF7_n=4"
+    tags: ["base", "full"]
+
+  base_n=5:
+    <<: *gf7_base
+    num_variables: 5
+    model: "custom_bart"
+    embedding_type: "standard"
+    position_encoding_type: "learned"
+    coeff_encoding: "prefix"
+    learning_target: "full"
+    data_path: "data/prod/GF7_n=5"
+    tags: ["base", "full"]
+
+  monomial_n=2:
+    <<: *gf7_base
+    num_variables: 2
+    model: "custom_bart"
+    embedding_type: "standard"
+    position_encoding_type: "learned"
+    coeff_encoding: "prefix"
+    learning_target: "full"
+    monomial_embedding: true
+    data_path: "data/prod/GF7_n=2"
+    tags: ["monomial", "full"]
+
+  monomial_n=3:
+    <<: *gf7_base
+    num_variables: 3
+    model: "custom_bart"
+    embedding_type: "standard"
+    position_encoding_type: "learned"
+    coeff_encoding: "prefix"
+    learning_target: "full"
+    monomial_embedding: true
+    data_path: "data/prod/GF7_n=3"
+    tags: ["monomial", "full"]
+
+  monomial_n=4:
+    <<: *gf7_base
+    num_variables: 4
+    model: "custom_bart"
+    embedding_type: "standard"
+    position_encoding_type: "learned"
+    coeff_encoding: "prefix"
+    learning_target: "full"
+    monomial_embedding: true
+    data_path: "data/prod/GF7_n=4"
+    tags: ["monomial", "full"]
+
+  monomial_n=5:
+    <<: *gf7_base
+    num_variables: 5
+    model: "custom_bart"
+    embedding_type: "standard"
+    position_encoding_type: "learned"
+    coeff_encoding: "prefix"
+    learning_target: "full"
+    monomial_embedding: true
+    data_path: "data/prod/GF7_n=5"
+    tags: ["monomial", "full"]
+
