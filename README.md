@@ -1,5 +1,5 @@
 # Computational Algebra with Attention: Transformer Oracles for Border Basis Algorithms
-Authors: [Hiroshi Kera](https://researchmap.jp/h_kera)$^*$, [Nico Pelleriti](https://www.zib.de/de/members/pelleriti)$^*$, [Yuki Ishihara](https://researchmap.jp/yishihara?lang=en), [Max Zimmer](https://maxzimmer.org/), [Sebastian Pokutta](https://www.pokutta.com/) (*equal contribution)
+Authors: [Hiroshi Kera](https://researchmap.jp/h_kera)\*, [Nico Pelleriti](https://www.zib.de/de/members/pelleriti)\*, [Yuki Ishihara](https://researchmap.jp/yishihara?lang=en), [Max Zimmer](https://maxzimmer.org/), [Sebastian Pokutta](https://www.pokutta.com/) (*equal contribution)
 
 
 This repository provides code for reproducing the experiments of our paper "[Computational Algebra with Attention: Transformer Oracles for Border Basis Algorithms](https://arxiv.org/abs/2505.23696)". The code is based on PyTorch 2.5 and SageMath 10.0+. 
