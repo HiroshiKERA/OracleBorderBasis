@@ -1,18 +1,12 @@
-# Transformer-oracled-border-basis
+# Computational Algebra with Attention: Transformer Oracles for Border Basis Algorithms
+Authors: [Hiroshi Kera](https://researchmap.jp/h_kera)$^*$, [Nico Pelleriti](https://www.zib.de/de/members/pelleriti)$^*$, [Yuki Ishihara](https://researchmap.jp/yishihara?lang=en), [Max Zimmer](https://maxzimmer.org/), [Sebastian Pokutta](https://www.pokutta.com/) (*equal contribution)
 
-This is the official implementation of our paper "[Computational Algebra with Attention: Transformer Oracles for Border Basis Algorithms](https://arxiv.org/abs/xxxx.xxxxx)". This repository implements an efficient approach for computing border bases using Transformer architecture, combining the power of deep learning with algebraic computations to accelerate the border basis calculation process.
 
-## Overview
-
-Border bases are generalizations of Gröbner bases, providing a more flexible tool for dealing with polynomial systems. This project uses Transformer architecture to optimize the computation of border bases, potentially offering significant performance improvements over traditional methods.
-
-## Requirements
-
-- SageMath 10.0+
+This repository provides code for reproducing the experiments of our paper "[Computational Algebra with Attention: Transformer Oracles for Border Basis Algorithms](https://arxiv.org/abs/2505.23696)". The code is based on PyTorch 2.5 and SageMath 10.0+. 
 
 ## SageMath Setup
 
-SageMath 10.0+ cannot be installed using apt-get for now (May, 27, 2025). 
+SageMath 10.0+ cannot be currently installed using `apt-get` and `pip install` (May, 27, 2025). 
 Follow the instruction in [this page](https://sagemanifolds.obspm.fr/install_ubuntu.html). 
 
 ## Reproducing main experiements
@@ -103,6 +97,6 @@ If you use this code in your research, please cite our paper:
   author={Hiroshi Kera and Nico Pelleriti and Yuki Ishihara and Max Zimmer and Sebastian Pokutta},
   year={2025},
   archivePrefix={arXiv},
-  eprint={xxxx.xxxxx}
+  eprint={2505.23696}
 }
 ```
